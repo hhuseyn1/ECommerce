@@ -34,3 +34,12 @@ cd your-ecommerce-app
 
 # Install dependencies
 npm install
+```
+## Login
+![image](https://github.com/hhuseyn1/ECommerce/assets/88426345/6807d0df-576f-449a-a5c7-f63e79ecd331)
+## Products
+![image](https://github.com/hhuseyn1/ECommerce/assets/88426345/1080772b-d0ba-42e9-af97-ae8395d9d508)
+## Detail
+![image](https://github.com/hhuseyn1/ECommerce/assets/88426345/a0cf5320-985d-46cb-a124-3235f9566ce2)
+## Cart
+![image](https://github.com/hhuseyn1/ECommerce/assets/88426345/02e13627-f94d-42b7-bd01-7496f6a129cb)
