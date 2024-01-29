@@ -1,4 +1,4 @@
-# Your eCommerce App Name
+# Mycommerce
 
 Welcome to [Mycommerce]! This is a React-based eCommerce application designed using Figma. 
 
@@ -9,7 +9,7 @@ Welcome to [Mycommerce]! This is a React-based eCommerce application designed us
   
 ## Introduction
 
-Provide a brief introduction to your eCommerce app. Mention its purpose, key features, and any other important information.
+Mycommerce is a react-based eCommerce app. It's name is thought up in hours :D
 
 ## Features
 
