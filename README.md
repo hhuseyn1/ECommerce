@@ -27,10 +27,10 @@ Provide step-by-step instructions on how to install and set up the project local
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-ecommerce-app.git
+git clone https://www.github.com/hhuseyn1/ECommerce.git
 
 # Navigate to the project directory
-cd your-ecommerce-app
+cd eCommerce
 
 # Install dependencies
 npm install
