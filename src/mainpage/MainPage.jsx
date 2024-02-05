@@ -1,24 +1,21 @@
 import React from 'react'
 import ProductCard from './components/ProductCard'
-import LogoIcon from '../assets/logo.png'
-import CartIcon from '../assets/EmptyCart.svg'
+import Navigation from './components/Navigation'
 
 export default function MainPage() {
   return (
-    <div>
-        <navbar className="flex">
-            <p>Women</p>
-            <p>Men</p>
-            <p>Kids</p>
-            <img src={LogoIcon} alt="" />
-            <img src={CartIcon} alt="" />
-        </navbar>
-        <div className='flex'>
+    <div className='mx-32'>
+       <Navigation />
+        <div className='mt-10 justify-center'>
             <h2>Category name</h2>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-        </div>
+            <div className='my-5 w-full grid grid-cols-3'>
+              <ProductCard/>
+              <ProductCard/>
+              <ProductCard/>
+              <ProductCard/>  
+              <ProductCard/>
+            </div>  
+        </div>  
     </div>
   )
 }

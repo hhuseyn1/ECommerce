@@ -5,11 +5,11 @@ export default function ProductCard() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <>
+    <>  
       <div
         className={`flex flex-col w-[386] h-[444px] hover:shadow shadow-slate-400 transition duration-100 ease-in-out ${
           isHovered ? 'relative' : ''
-        }`}
+        } my-5 hover: cursor-pointer`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
