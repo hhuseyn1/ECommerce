@@ -1,21 +1,15 @@
 import React from 'react'
 import ProductCard from './components/ProductCard'
 import Navigation from './components/Navigation'
+import Products from './components/Products'
+import Details from './components/Details'
 
 export default function MainPage() {
   return (
     <div className='mx-32'>
        <Navigation />
-        <div className='mt-10 justify-center'>
-            <h2>Category name</h2>
-            <div className='my-5 w-full grid grid-cols-3'>
-              <ProductCard/>
-              <ProductCard/>
-              <ProductCard/>
-              <ProductCard/>  
-              <ProductCard/>
-            </div>  
-        </div>  
+       <Details/>
+       {/* <Products /> */}
     </div>
   )
 }
