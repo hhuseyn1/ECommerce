@@ -9,8 +9,8 @@ export default function MainPage() {
   return (
     <div className='mx-32'>
        <Navigation />
-       <CartDetails/>
-       {/* <Products /> */}
+          {/* <CartDetails/> */}
+          {/* <Products /> */}
     </div>
   )
 }

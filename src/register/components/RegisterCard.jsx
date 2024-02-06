@@ -34,7 +34,7 @@ export default function RegisterCard() {
             </div>
           </div>
         <div className='flex justify-center items-center'>
-          <input type="submit" value="Login" className='bg-green-500 text-white sm:w-[40%] w-full h-12 cursor-pointer' />
+          <input type="submit" value="Register" className='bg-green-500 text-white sm:w-[40%] w-full h-12 cursor-pointer' />
         </div>
       </div>
     </div>
