@@ -6,7 +6,7 @@ export default function LoginCard() {
 
   return (
     <>
-      <div className='flex flex-col w-[399px] h-[375px] justify-around items-center'>
+      <div className='flex flex-col sm:w-[399px] h-[375px] w-screen justify-around items-center'>
         <div className='flex flex-col items-center'>
           <h1 className='font-bold text-5xl'>Hello Again!</h1>
           <h4 className='text-2xl'>Welcome Back</h4>

@@ -5,7 +5,7 @@ export default function Login() {
   const location = useLocation();
 
   return (
-    <div className='flex flex-col justify-center items-center h-screen'>
+    <div className='flex flex-col justify-center items-center w-screen h-screen'>
       <LoginCard />
       <p>
         Do you haven't account yet? Register{' '}
