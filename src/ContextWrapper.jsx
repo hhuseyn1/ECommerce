@@ -7,7 +7,7 @@ export default MyContext;
 export const ContextWrapper = ({children}) =>{
 
     const [mail,setEmail] = useState("")
-    const [authorized,setAuthorized] = useState(false);
+    const [authorized,setAuthorized] = useState(true);
 
     const ContextData = {
         mail: mail,

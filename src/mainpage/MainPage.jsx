@@ -11,6 +11,7 @@ export default function MainPage() {
        <Navigation />
           {/* <CartDetails/> */}
           {/* <Products /> */}
+          {<Details/>}
     </div>
   )
 }
