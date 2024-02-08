@@ -2,6 +2,7 @@ import React from 'react'
 import LogoIcon from '../../assets/logo.png'
 import CartIcon from '../../assets/EmptyCart.svg'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
 
@@ -14,12 +15,14 @@ export default function Navigation() {
   return (
     <nav className="flex justify-between items-center">
       <div className='flex'>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 mr-5'>Women</button>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 mr-5'>Men</button>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500'>Kids</button>
+        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500 mr-5'>Women</button>
+        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500 mr-5'>Men</button>
+        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500'>Kids</button>
       </div>  
-      <div className='flex items-center'>
-        <img src={LogoIcon} alt="" />
+      <div className='flex items-center hover:cursor-pointer'>
+        <Link to="/mainpage">
+          <img src={LogoIcon} alt="Logo" />
+        </Link>
       </div>
       <div className='flex items-center'>
         <select value={selectedOption} onChange={handleOptionChange}>
