@@ -7,10 +7,6 @@ export default function Products() {
         <h2>Category name</h2>
         <div className='my-5 w-full grid grid-cols-3'>
           <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>  
-          <ProductCard/>
         </div>  
     </div>  
   )

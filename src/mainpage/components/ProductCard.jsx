@@ -29,7 +29,7 @@ export default function ProductCard() {
         
         <div>
           <h3>Apollo Running Short</h3>
-          <p>$50.00</p>
+          <p>$50.00</p> 
         </div>
       </div>
     </>
