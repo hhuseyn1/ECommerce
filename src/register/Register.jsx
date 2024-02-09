@@ -1,8 +1,9 @@
 import React from 'react'
 import RegisterCard from './components/RegisterCard'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
+  
   return (
     <div className='flex flex-col justify-center items-center h-screen'>
         <RegisterCard/>

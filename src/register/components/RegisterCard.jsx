@@ -4,6 +4,7 @@ import PassIcon from '../../assets/bx_bxs-lock-alt.svg';
 import UserIcon from '../../assets/user.svg';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useCookieContext } from '../../contexts/CookieContext';
 
 export default function RegisterCard() {
   const [formData,setFormData] = useState({})

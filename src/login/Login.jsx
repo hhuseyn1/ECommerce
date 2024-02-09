@@ -1,8 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoginCard from './components/LoginCard'
 
 export default function Login() {
-  const location = useLocation();
 
   return (
     <div className='flex flex-col justify-center items-center w-screen h-screen'>
