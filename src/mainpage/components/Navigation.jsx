@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import MyContext from '../../contexts/ContextWrapper';
 import LogoIcon from '../../assets/logo.png'
 import CartIcon from '../../assets/EmptyCart.svg'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 
 export default function Navigation() {
-
   const [selectedOption, setSelectedOption] = useState('dollar');
+  const { categories, getCategories, setCurrentCategory, filterProducts } = useContext(MyContext);
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -14,11 +19,18 @@ export default function Navigation() {
 
   return (
     <nav className="flex justify-between items-center">
-      <div className='flex'>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500 mr-5'>Women</button>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500 mr-5'>Men</button>
-        <button className='hover:border-b-2 border-b border-transparent hover:border-green-500 hover:text-green-500'>Kids</button>
-      </div>  
+      <ul className="flex mx-4">
+        {categories.map((c) => (
+          <li key={c} className="flex flex-col text-center w-[70px] h-[56px]">
+            <Link to='/mainpage' onClick={() => {
+              setCurrentCategory(c);
+              filterProducts(c);
+            }} className="py-6 border-b-2 mt-3 border-transparent hover:text-green-400 hover:border-green-400">
+              {c}
+            </Link>
+          </li>
+        ))}
+      </ul>
       <div className='flex items-center hover:cursor-pointer'>
         <Link to="/mainpage">
           <img src={LogoIcon} alt="Logo" />
@@ -29,8 +41,10 @@ export default function Navigation() {
           <option value="dollar">$</option>
           <option value="manat">₼</option>
         </select>
-        <img src={CartIcon} alt="Cart Icon" className='hover: cursor-pointer' />
+        <Link to="/cart">
+          <img src={CartIcon} alt="Cart Icon" className='hover: cursor-pointer' />
+        </Link>
       </div>
     </nav>
-  )
+  );
 }

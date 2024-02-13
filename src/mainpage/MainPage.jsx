@@ -1,17 +1,44 @@
 import React from 'react'
 import ProductCard from './components/ProductCard'
 import Navigation from './components/Navigation'
-import Products from './components/Products'
-import Details from './components/Details'
-import CartDetails from './components/CartDetails'
+import { useEffect,useContext } from 'react'
+import MyContext from '../contexts/ContextWrapper'
+import { useParams } from 'react-router-dom'
 
-export default function MainPage() {
-  return (
-    <div className='mx-32'>
-       <Navigation />
-          {/* <CartDetails/> */}
-          {/* <Products /> */}
-          {<Details/>}
-    </div>
-  )
+export default function MainPage({setItems}) {
+  const { currentCategory, filteredProducts, getProducts, products } = useContext(MyContext)
+  const { id } = useParams();
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+    
+    return (
+      <>
+        <div className='mx-32'>
+         <Navigation />
+         <div className="my-10"></div>
+           <div>
+            <h1 className="my-10">{currentCategory}</h1>
+            <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 justify-items-center align-items-center">
+              {filteredProducts.length ? (
+                filteredProducts.map((product) => (
+                  <ProductCard key={product._id} {...product} setItems={setItems} />
+                ))
+              ) : products.length ? (
+                products.map((product) => (
+                  <ProductCard key={product._id} {...product} />
+                ))
+              ) : (
+                <p className="col-span-3 text-center font-bold">
+                  No Products Found
+                </p>
+                )}
+          </div>
+          </div>
+        </div>
+      </>
+    );
+  
 }
+
