@@ -3,7 +3,6 @@ import ProductCard from './components/ProductCard'
 import Navigation from './components/Navigation'
 import { useEffect,useContext } from 'react'
 import MyContext from '../contexts/ContextWrapper'
-import { useParams } from 'react-router-dom'
 
 export default function MainPage({setItems}) {
   const { currentCategory, filteredProducts, getProducts, products } = useContext(MyContext)

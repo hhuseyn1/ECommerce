@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 export default function Details() {
   const { getProductById } = useContext(MyContext);
   const params = useParams();
+  const { currency, setCurrency } = useContext(MyContext);
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
@@ -26,7 +27,7 @@ export default function Details() {
   }, []);
   
   const setImage = () =>{
-    
+
   }
   
   return (

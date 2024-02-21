@@ -23,7 +23,7 @@ export default function CartCard({item}) {
           </h2> 
           <h3 className="font-[Raleway] text-[24px] font-bold">${item.price}</h3>
 
-          {item.size.length>0 && (
+          {item?.size?.length>0 && (
                    <div className="mt-10">
                     <label className="text-[18px] font-bold">SIZE:</label>
                     <div className="flex">

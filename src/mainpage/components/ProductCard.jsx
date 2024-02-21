@@ -3,24 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import CircleIcon from '../../assets/CircleIcon.svg'
 import MyContext from '../../contexts/ContextWrapper'
 
-export default function ProductCard({id, brand, price, gallery,size, colors,setItems}) {
-
+export default function ProductCard({id, brand, price, gallery}) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { currency, convertCurrency } = useContext(MyContext);
-  
-  const AddToCartButton = ({ item }) => {
-    const { addToCart } = useContext(MyContext);
-  }
 
     const handleClick = () => {
       navigate(`/product/${id}`); 
     };
-
-    const handleAddToCart = () => {
-      AddToCartButton(item)
-      setItems(prevItems => [...prevItems, { id, brand, price, gallery, size ,colors}]); 
-    };
+    
 
   return (
     <div
@@ -33,7 +24,6 @@ export default function ProductCard({id, brand, price, gallery,size, colors,setI
       {isHovered && (
         <img 
         onClick={()=>{
-          handleAddToCart()
           navigate("/mainpage")
         }}
           src={CircleIcon}
@@ -42,7 +32,7 @@ export default function ProductCard({id, brand, price, gallery,size, colors,setI
         />
       )}
 
-      <img  onClick={handleClick} src={gallery} alt="" className="w-[354px] h-[330px]" />
+      <img onClick={handleClick} src={gallery} alt="" className="w-[354px] h-[330px]" />
 
       <div>
         <button>{brand}</button>
