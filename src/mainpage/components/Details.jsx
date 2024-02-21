@@ -8,30 +8,26 @@ export default function Details() {
   const params = useParams();
   const { currency, setCurrency } = useContext(MyContext);
   const [product, setProduct] = useState({});
-  const { id } = useParams();
-
+  const [selectedImage, setSelectedImage] = useState(product?.gallery?.[0]);
   const handleAddToCart = () => {
     setItems(prevItems => [...prevItems, { ...product}]); 
   };  
-
+  
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const product = await getProductById(params.id);
         setProduct(product.product);
+        setSelectedImage(product.product?.gallery?.[0])
       } catch (error) {
         console.log("Error fetching product:", error);
       }
     };
     fetchProduct();
   }, []);
-  
-  const setImage = () =>{
 
-  }
-  
   return (
-    <div>
+    <div className="mx-32">
       <Navigation/>
       {product ? ( 
         <>
@@ -41,7 +37,7 @@ export default function Details() {
             <img
               key={index}
               src={gallery}
-              onClick={()=> {setImage()}}
+              onClick={() => {setSelectedImage(gallery)}} 
               className="w-20 h-20 mb-10 sm:mr-10 hover:cursor-pointer hover:border border-[#5ECE7B]"
               alt={`Gallery ${index}`}
             />
@@ -50,9 +46,9 @@ export default function Details() {
           <div className="w-full md:w-[1002px] h-[595px] flex flex-col md:flex-row">
             <div>
               <img
-                src={product.gallery}
+                src={selectedImage}
                 alt='Selected product'
-                className='w-full md:w-[610px] h-[511px] alt="" '
+                className='w-full md:w-[610px] h-[511px]'
               />
             </div>
             <div className="ml-0 md:ml-[100px] flex flex-col">
@@ -65,7 +61,7 @@ export default function Details() {
                      {product.size?.map((size, index) => (
                        <div
                          key={index}
-                         className="flex border-[1.9px] border-zinc-900 w-[63px] h-[45px] justify-center items-center  hover: cursor-pointer"
+                         className="flex border-[1.9px] border-zinc-900 w-[63px] h-[45px] justify-center items-center hover:bg-black hover:text-white  hover:cursor-pointer"
                        >
                          <p>{size}</p>
                        </div>
@@ -80,11 +76,9 @@ export default function Details() {
                   {product.colors?.map((color, index) => (
                     <div
                       key={index}
-                      className="w-[32px] h-[32px] border-2 hover:cursor-pointer"
+                      className="w-[32px] h-[32px] border-2 hover:border-[#5ECE7B] hover:cursor-pointer"
                       style={{
                         backgroundColor: color,
-                        borderColor:
-                          color === "#5ECE7B" ? "#5ECE7B" : "#000000",
                       }}
                     ></div>
                   ))}
