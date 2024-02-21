@@ -6,9 +6,10 @@ import Navigation from "./Navigation";
 export default function Details() {
   const { getProductById } = useContext(MyContext);
   const params = useParams();
-  const { currency, setCurrency } = useContext(MyContext);
+  const { currency, convertCurrency } = useContext(MyContext);
   const [product, setProduct] = useState({});
   const [selectedImage, setSelectedImage] = useState(product?.gallery?.[0]);
+
   const handleAddToCart = () => {
     setItems(prevItems => [...prevItems, { ...product}]); 
   };  
@@ -87,8 +88,7 @@ export default function Details() {
               <div className="mt-10">
                 <p className="text-[18px] font-bold">PRICE:</p>
                 <p className="text-[18px] font-bold mt-3">
-                  <span>$</span>
-                  {product.price}
+                  {convertCurrency(product.price).toFixed(2)} {currency == 'dollar' ? '$' : '₼'}
                 </p>
               </div>
               <div className="mt-10">
