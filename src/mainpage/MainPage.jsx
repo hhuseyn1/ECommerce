@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom'
 
 export default function MainPage({setItems}) {
   const { currentCategory, filteredProducts, getProducts, products } = useContext(MyContext)
-  const { id } = useParams();
 
     useEffect(() => {
         getProducts();

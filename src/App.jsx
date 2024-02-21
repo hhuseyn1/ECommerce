@@ -19,7 +19,7 @@ export default function App() {
                 <Route path="/mainpage" element={<MainPage setItems={setItems} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/product/:id" element={<ProductDetail setItems={setItems} />} />
+                <Route path="/product/:id" element={<ProductDetail/>} />
                 <Route path="/cart" element={<CartDetails items={items} />} />
             </Routes>
       </CookieProvider>

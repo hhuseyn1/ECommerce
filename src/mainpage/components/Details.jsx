@@ -3,29 +3,32 @@ import { useParams } from "react-router-dom";
 import MyContext from "../../contexts/ContextWrapper";
 import Navigation from "./Navigation";
 
-export default function Details({setItems}) {
+export default function Details() {
   const { getProductById } = useContext(MyContext);
   const params = useParams();
   const [product, setProduct] = useState({});
-  
+  const { id } = useParams();
+
   const handleAddToCart = () => {
     setItems(prevItems => [...prevItems, { ...product}]); 
-  };
-
+  };  
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const product = await getProductById(params.id);
-        setProduct(product);
+        setProduct(product.product);
       } catch (error) {
         console.log("Error fetching product:", error);
       }
     };
-
     fetchProduct();
-  }, [getProductById, params]);
-
+  }, []);
+  
+  const setImage = () =>{
+    
+  }
+  
   return (
     <div>
       <Navigation/>
@@ -33,28 +36,32 @@ export default function Details({setItems}) {
         <>
         <div className="flex flex-col md:flex-row mt-16">
           <div className="flex flex-row md:flex-col items-center md:items-start">
-          {product.gallery.map((gallery, index) => (
-              <img
+          {product?.gallery?.map((gallery, index) => (
+            <img
+              key={index}
               src={gallery}
-              className="w-20 h-20 mb-10 sm:mr-10 hover: cursor-pointer hover:border border-[#5ECE7B]"
+              onClick={()=> {setImage()}}
+              className="w-20 h-20 mb-10 sm:mr-10 hover:cursor-pointer hover:border border-[#5ECE7B]"
+              alt={`Gallery ${index}`}
             />
-            ))}
+          ))}
           </div>
           <div className="w-full md:w-[1002px] h-[595px] flex flex-col md:flex-row">
             <div>
               <img
-                src={product.gallery[0]}
+                src={product.gallery}
+                alt='Selected product'
                 className='w-full md:w-[610px] h-[511px] alt="" '
               />
             </div>
             <div className="ml-0 md:ml-[100px] flex flex-col">
               <h2 className="text-3xl font-semibold">{product.brand}</h2>
               <h3 className="text-3xl font-light">{product.title}</h3>
-              {product.size.length>0 && (
+              {product.size?.length>0 && (
                    <div className="mt-10">
                    <p className="text-[18px] font-bold">SIZE:</p>
                    <div className="flex gap-3">
-                     {product.size.map((size, index) => (
+                     {product.size?.map((size, index) => (
                        <div
                          key={index}
                          className="flex border-[1.9px] border-zinc-900 w-[63px] h-[45px] justify-center items-center  hover: cursor-pointer"
@@ -69,7 +76,7 @@ export default function Details({setItems}) {
               <div className="mt-5">
                 <p className="text-[18px] font-bold">COLOR:</p>
                 <div className="flex gap-3">
-                  {product.colors.map((color, index) => (
+                  {product.colors?.map((color, index) => (
                     <div
                       key={index}
                       className="w-[32px] h-[32px] border-2 hover:cursor-pointer"
