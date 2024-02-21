@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CircleIcon from '../../assets/CircleIcon.svg'
 import MyContext from '../../contexts/ContextWrapper'
@@ -7,7 +7,29 @@ export default function ProductCard({id, brand, price, gallery}) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { currency, convertCurrency } = useContext(MyContext);
+  const { getProductById } = useContext(MyContext);
+  const [product, setProduct] = useState({});
+  const {addToCart} = useContext(MyContext)
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const product = await getProductById(params.id);
+        setProduct(product.product);
+        setSelectedImage(product.product?.gallery?.[0])
+      } catch (error) {
+        console.log("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, []);
+
+
+  const handleAddToCart = (product) => {
+    addToCart(prevItems => [...prevItems, { ...product}]); 
+    console.log('1')
+  };  
+  
     const handleClick = () => {
       navigate(`/product/${id}`); 
     };
@@ -25,6 +47,7 @@ export default function ProductCard({id, brand, price, gallery}) {
         <img 
         onClick={()=>{
           navigate("/mainpage")
+          handleAddToCart(product)
         }}
           src={CircleIcon}
           alt="Add to Cart"

@@ -8,10 +8,11 @@ export default function Details() {
   const params = useParams();
   const { currency, convertCurrency } = useContext(MyContext);
   const [product, setProduct] = useState({});
+  const {addToCart} = useContext(MyContext)
   const [selectedImage, setSelectedImage] = useState(product?.gallery?.[0]);
 
-  const handleAddToCart = () => {
-    setItems(prevItems => [...prevItems, { ...product}]); 
+  const handleAddToCart = (product) => {
+    addToCart(prevItems => [...prevItems, { ...product}]); 
   };  
   
   useEffect(() => {
@@ -92,7 +93,7 @@ export default function Details() {
                 </p>
               </div>
               <div className="mt-10">
-                <button onClick={()=>handleAddToCart} className="bg-[#5ECE7B] text-white w-full max-w-[300px] py-4 font-medium">
+                <button onClick={()=>handleAddToCart(product)} className="bg-[#5ECE7B] text-white w-full max-w-[300px] py-4 font-medium">
                   ADD TO CART
                 </button>
               </div>
