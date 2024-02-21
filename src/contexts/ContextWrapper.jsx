@@ -1,7 +1,6 @@
 import { useCookieContext } from "./CookieContext";
 import { createContext,useEffect,useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 
 const MyContext = createContext();
 export default MyContext;
@@ -12,7 +11,19 @@ export const ContextWrapper = ({children}) =>{
     const [currentCategory, setCurrentCategory] = useState("All");
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [currency,setCurrency] = useState('dollar')
     const navigate = useNavigate();
+
+    const rates = {
+        'dollar': 1,
+        'manat': 1.7,
+      };
+    
+      const convertCurrency = (amount) => {
+        return amount * rates[currency];
+      }
+    
+
 
     const fetchData = async (url) => {
         try {
@@ -45,6 +56,7 @@ export const ContextWrapper = ({children}) =>{
         const data = await fetchData("http://localhost:5000/api/products");
         if (data) {
             setProducts(data.product);
+            setCurrency(currency)
         }
     };
 
@@ -67,7 +79,6 @@ export const ContextWrapper = ({children}) =>{
     };
 
 
-
     useEffect(() => {
         getProducts();
         getCategories();
@@ -83,7 +94,10 @@ export const ContextWrapper = ({children}) =>{
         filteredProducts,
         products,
         getProducts,
-        getProductById
+        getProductById,
+        currency,
+        setCurrency,
+        convertCurrency
     };
 
 

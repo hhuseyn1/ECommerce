@@ -13,8 +13,10 @@ function CartCard({items}) {
   }, [items]);
   return ( 
     <> 
+    <div className="mx-32">
+
     <Navigation/>
-      <div className="border border-x-0 border-y-slate-300 py-4 flex justify-between flex-col sm:flex-row"> 
+      <div className="border border-x-0 border-y-slate-300 py-4 mt-10 flex justify-between flex-col sm:flex-row"> 
         { items.length>0 ? (
             <>
             {cartItems.map((item, index) => (
@@ -37,6 +39,7 @@ function CartCard({items}) {
         )
         }
       </div>  
+        </div>
     </> 
   ); 
 } 

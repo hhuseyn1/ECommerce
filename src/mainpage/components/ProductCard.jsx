@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CircleIcon from '../../assets/CircleIcon.svg'
+import MyContext from '../../contexts/ContextWrapper'
+
 export default function ProductCard({id, brand, price, gallery,size, colors,setItems}) {
+
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const { currency, convertCurrency } = useContext(MyContext);
 
   const handleClick = () => {
     navigate(`/product/${id}`); 
@@ -37,7 +41,7 @@ export default function ProductCard({id, brand, price, gallery,size, colors,setI
 
       <div>
         <button>{brand}</button>
-        <p>${price}</p>
+        <p>{convertCurrency(price).toFixed(2)} {currency == 'dollar' ? '$' : '₼'}</p>
       </div>
     </div>
   );

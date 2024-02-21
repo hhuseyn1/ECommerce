@@ -6,7 +6,7 @@ import Navigation from "./Navigation";
 export default function Details({setItems}) {
   const { getProductById } = useContext(MyContext);
   const params = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState({});
   
   const handleAddToCart = () => {
     setItems(prevItems => [...prevItems, { ...product}]); 
@@ -29,11 +29,10 @@ export default function Details({setItems}) {
   return (
     <div>
       <Navigation/>
-      {product ?(
+      {product ? ( 
         <>
         <div className="flex flex-col md:flex-row mt-16">
           <div className="flex flex-row md:flex-col items-center md:items-start">
-
           {product.gallery.map((gallery, index) => (
               <img
               src={gallery}

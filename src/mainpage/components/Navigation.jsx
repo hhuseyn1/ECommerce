@@ -8,6 +8,7 @@ import CartIcon from '../../assets/EmptyCart.svg'
 export default function Navigation() {
   const [selectedOption, setSelectedOption] = useState('dollar');
   const { categories, getCategories, setCurrentCategory, filterProducts } = useContext(MyContext);
+  const { currency, setCurrency } = useContext(MyContext);
 
   useEffect(() => {
     getCategories();
@@ -15,7 +16,9 @@ export default function Navigation() {
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+    setCurrency(event.target.value);
   };
+
 
   return (
     <nav className="flex justify-between items-center">
@@ -37,7 +40,7 @@ export default function Navigation() {
         </Link>
       </div>
       <div className='flex items-center'>
-        <select value={selectedOption} onChange={handleOptionChange}>
+        <select value={currency} onChange={handleOptionChange}>
           <option value="dollar">$</option>
           <option value="manat">₼</option>
         </select>
