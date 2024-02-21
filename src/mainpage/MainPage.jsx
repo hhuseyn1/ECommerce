@@ -15,7 +15,7 @@ export default function MainPage({setItems}) {
     
     return (
       <>
-        <div className='mx-32'>
+        <div className='mx-28'>
          <Navigation />
          <div className="my-10"></div>
            <div>

@@ -1,16 +1,20 @@
 import React from "react"; 
-import { useState, useEffect } from "react"; 
+import { useState, useEffect,useContext } from "react"; 
 import Navigation from "./Navigation";
+import MyContext from "../../contexts/ContextWrapper";
 
-function CartCard({items}) { 
+function CartCard() { 
   const[total, setTotal]=useState(0)
+  const { cartItems } = useContext(MyContext);
 
   useEffect(() => {
     const totalPrice = items.reduce((accumulator, currentItem) => {
-      return accumulator + currentItem.price;
+      const discountedPrice = currentItem.price * 0.9;
+      return accumulator + discountedPrice;
     }, 0);
     setTotal(totalPrice);
   }, [items]);
+  
   return ( 
     <> 
     <div className="mx-32">

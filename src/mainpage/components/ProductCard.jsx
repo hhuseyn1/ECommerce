@@ -8,14 +8,19 @@ export default function ProductCard({id, brand, price, gallery,size, colors,setI
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { currency, convertCurrency } = useContext(MyContext);
+  
+  const AddToCartButton = ({ item }) => {
+    const { addToCart } = useContext(MyContext);
+  }
 
-  const handleClick = () => {
-    navigate(`/product/${id}`); 
-  };
+    const handleClick = () => {
+      navigate(`/product/${id}`); 
+    };
 
-  const handleAddToCart = () => {
-    setItems(prevItems => [...prevItems, { id, brand, price, gallery, size ,colors}]); 
-  };
+    const handleAddToCart = () => {
+      AddToCartButton(item)
+      setItems(prevItems => [...prevItems, { id, brand, price, gallery, size ,colors}]); 
+    };
 
   return (
     <div

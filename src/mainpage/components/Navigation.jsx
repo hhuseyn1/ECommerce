@@ -9,6 +9,8 @@ export default function Navigation() {
   const [selectedOption, setSelectedOption] = useState('dollar');
   const { categories, getCategories, setCurrentCategory, filterProducts } = useContext(MyContext);
   const { currency, setCurrency } = useContext(MyContext);
+  const {cartItems} = useContext(MyContext)
+
 
   useEffect(() => {
     getCategories();
@@ -47,6 +49,7 @@ export default function Navigation() {
         <Link to="/cart">
           <img src={CartIcon} alt="Cart Icon" className='hover: cursor-pointer' />
         </Link>
+          <p className='mx-1 mb-5'>{cartItems.length ? cartItems.length : ''}</p>
       </div>
     </nav>
   );

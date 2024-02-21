@@ -12,8 +12,13 @@ export const ContextWrapper = ({children}) =>{
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currency,setCurrency] = useState('dollar')
+    const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate();
 
+    const addToCart = (item) => {
+        setCartItems((prevItems) => [...prevItems, item]);
+    };
+  
     const rates = {
         'dollar': 1,
         'manat': 1.7,
@@ -22,8 +27,6 @@ export const ContextWrapper = ({children}) =>{
       const convertCurrency = (amount) => {
         return amount * rates[currency];
       }
-    
-
 
     const fetchData = async (url) => {
         try {
@@ -97,7 +100,9 @@ export const ContextWrapper = ({children}) =>{
         getProductById,
         currency,
         setCurrency,
-        convertCurrency
+        convertCurrency,
+        cartItems,
+        addToCart
     };
 
 
