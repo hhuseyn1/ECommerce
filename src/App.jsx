@@ -3,7 +3,6 @@ import Login from './login/Login'
 import Register from './register/Register'
 import MainPage from './mainpage/MainPage'
 import { Navigate, Route, Routes } from "react-router-dom"
-import NotFound from './NotFound'
 import CartDetails from './mainpage/components/CartDetails'
 import ProductDetail from './mainpage/components/Details'
 import { CookieProvider } from './contexts/CookieContext'
@@ -25,5 +24,4 @@ export default function App() {
       </CookieProvider>
     );
 }
-
 
