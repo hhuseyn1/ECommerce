@@ -7,13 +7,13 @@ function CartCard() {
   const [total, setTotal] = useState(0);
 
 
-  // useEffect(() => {
-  //   const totalPrice = cartItems.reduce((accumulator, currentItem) => {
-  //     const discountedPrice = currentItem.price * 0.9;
-  //     return accumulator + discountedPrice;
-  //   }, 0);
-  //   setTotal(totalPrice);
-  // }, [cartItems]);
+  useEffect(() => {
+    const totalPrice = cartItems.reduce((accumulator, currentItem) => {
+      const discountedPrice = currentItem.price * 0.9;
+      return accumulator + discountedPrice;
+    }, 0);
+    setTotal(totalPrice);
+  }, [cartItems]);
   
   return (
     <>

@@ -24,8 +24,9 @@ export default function ProductCard({id}) {
   }, []);
 
 
-  const handleAddToCart = (product) => {
-    addToCart(prevItems => [...prevItems, { ...product}]); 
+  const handleAddToCart = () => {
+    addToCart(product);
+    console.log(product)
   };  
   
     const handleClick = () => {

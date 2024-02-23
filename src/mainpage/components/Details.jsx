@@ -4,17 +4,16 @@ import MyContext from "../../contexts/ContextWrapper";
 import Navigation from "./Navigation";
 
 export default function Details() {
-  const { getProductById } = useContext(MyContext);
+  const { addToCart, currency,convertCurrency,getProductById } = useContext(MyContext);
   const params = useParams();
-  const { currency, convertCurrency } = useContext(MyContext);
   const [product, setProduct] = useState({});
-  const {addToCart} = useContext(MyContext)
   const [selectedImage, setSelectedImage] = useState(product?.gallery?.[0]);
 
-  const handleAddToCart = (product) => {
-    addToCart(prevItems => [...prevItems, { ...product}]); 
-  };  
-  
+  const handleAddToCart = () => {
+    addToCart(product);
+    console.log(product)
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {

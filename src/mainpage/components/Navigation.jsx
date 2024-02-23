@@ -7,9 +7,7 @@ import CartIcon from '../../assets/EmptyCart.svg'
 
 export default function Navigation() {
   const [selectedOption, setSelectedOption] = useState('dollar');
-  const { categories, getCategories, setCurrentCategory, filterProducts } = useContext(MyContext);
-  const { currency, setCurrency } = useContext(MyContext);
-  const {cartItems} = useContext(MyContext)
+  const { currency,setCurrency,cartItems,categories, getCategories, setCurrentCategory, filterProducts } = useContext(MyContext);
 
 
   useEffect(() => {

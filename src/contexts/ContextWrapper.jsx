@@ -109,7 +109,6 @@ export const ContextWrapper = ({children}) =>{
         setCurrency,
         convertCurrency,
         cartItems,
-        setCartItems,
         addToCart,
         removeFromCart
     };
