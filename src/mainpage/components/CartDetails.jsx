@@ -6,14 +6,15 @@ function CartCard() {
   const { cartItems } = useContext(MyContext);
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    const totalPrice = cartItems.reduce((accumulator, currentItem) => {
-      const discountedPrice = currentItem.price * 0.9;
-      return accumulator + discountedPrice;
-    }, 0);
-    setTotal(totalPrice);
-  }, [cartItems]);
 
+  // useEffect(() => {
+  //   const totalPrice = cartItems.reduce((accumulator, currentItem) => {
+  //     const discountedPrice = currentItem.price * 0.9;
+  //     return accumulator + discountedPrice;
+  //   }, 0);
+  //   setTotal(totalPrice);
+  // }, [cartItems]);
+  
   return (
     <>
       <div className="mx-32">
@@ -36,7 +37,7 @@ function CartCard() {
             </>
           ) : (
             <p className="col-span-3 text-center font-bold">Cart Empty!</p>
-          )}
+            )}
         </div>
       </div>
     </>

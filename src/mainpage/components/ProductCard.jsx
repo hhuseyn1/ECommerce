@@ -3,20 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import CircleIcon from '../../assets/CircleIcon.svg'
 import MyContext from '../../contexts/ContextWrapper'
 
-export default function ProductCard({id, brand, price, gallery}) {
+export default function ProductCard({id}) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-  const { currency, convertCurrency } = useContext(MyContext);
-  const { getProductById } = useContext(MyContext);
+  const { currency, convertCurrency,getProductById,addToCart } = useContext(MyContext);
   const [product, setProduct] = useState({});
-  const {addToCart} = useContext(MyContext)
+  const [selectedImage,setSelectedImage]= useState('')
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const product = await getProductById(params.id);
+        const product = await getProductById(id);
         setProduct(product.product);
-        setSelectedImage(product.product?.gallery?.[0])
+        setSelectedImage(product.product?.gallery[0])
       } catch (error) {
         console.log("Error fetching product:", error);
       }
@@ -27,7 +26,6 @@ export default function ProductCard({id, brand, price, gallery}) {
 
   const handleAddToCart = (product) => {
     addToCart(prevItems => [...prevItems, { ...product}]); 
-    console.log('1')
   };  
   
     const handleClick = () => {
@@ -55,11 +53,11 @@ export default function ProductCard({id, brand, price, gallery}) {
         />
       )}
 
-      <img onClick={handleClick} src={gallery} alt="" className="w-[354px] h-[330px]" />
+      <img onClick={handleClick} src={selectedImage} alt={product.brand + ' image'} className="w-[354px] h-[330px]" />
 
       <div>
-        <button>{brand}</button>
-        <p>{convertCurrency(price).toFixed(2)} {currency == 'dollar' ? '$' : '₼'}</p>
+        <button>{product.brand}</button>
+        <p>{convertCurrency(product.price).toFixed(2)} {currency == 'dollar' ? '$' : '₼'}</p>
       </div>
     </div>
   );

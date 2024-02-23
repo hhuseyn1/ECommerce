@@ -6,20 +6,18 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import CartDetails from './mainpage/components/CartDetails'
 import ProductDetail from './mainpage/components/Details'
 import { CookieProvider } from './contexts/CookieContext'
-import { useState } from 'react'
 
 export default function App() {
-    const [items, setItems] = useState([]);
 
     return (
         <CookieProvider>
             <Routes>
                 <Route path="/" element={<Navigate to="/login" replace />}></Route>
-                <Route path="/mainpage" element={<MainPage setItems={setItems} />} />
+                <Route path="/mainpage" element={<MainPage/>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<ProductDetail/>} />
-                <Route path="/cart" element={<CartDetails items={items} />} />
+                <Route path="/cart" element={<CartDetails />} />
             </Routes>
       </CookieProvider>
     );

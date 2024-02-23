@@ -49,7 +49,7 @@ export default function Navigation() {
         <Link to="/cart">
           <img src={CartIcon} alt="Cart Icon" className='hover: cursor-pointer' />
         </Link>
-          <p className='mx-1 mb-5'>{cartItems.length ? cartItems.length : ''}</p>
+          <p className='mx-1 mb-5'>{cartItems?.length ? cartItems.length : ''}</p>
       </div>
     </nav>
   );

@@ -16,8 +16,13 @@ export const ContextWrapper = ({children}) =>{
     const navigate = useNavigate();
 
     const addToCart = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
+        setCartItems((prevItems) => [...prevItems, item] );
     };
+
+    const removeFromCart = (id) => {
+        const newCart = cart.filter((item) => item.id !== id);
+        setCart(newCart);
+      };
   
     const rates = {
         'dollar': 1,
@@ -104,7 +109,9 @@ export const ContextWrapper = ({children}) =>{
         setCurrency,
         convertCurrency,
         cartItems,
-        addToCart
+        setCartItems,
+        addToCart,
+        removeFromCart
     };
 
 

@@ -4,7 +4,7 @@ import Navigation from './components/Navigation'
 import { useEffect,useContext } from 'react'
 import MyContext from '../contexts/ContextWrapper'
 
-export default function MainPage({setItems}) {
+export default function MainPage() {
   const { currentCategory, filteredProducts, getProducts, products } = useContext(MyContext)
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function MainPage({setItems}) {
             <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 justify-items-center align-items-center">
               {filteredProducts.length ? (
                 filteredProducts.map((product) => (
-                  <ProductCard key={product._id} {...product} setItems={setItems} />
+                  <ProductCard key={product._id} {...product} />
                 ))
               ) : products.length ? (
                 products.map((product) => (
